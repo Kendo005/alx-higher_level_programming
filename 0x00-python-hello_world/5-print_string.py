@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-str = "lists.h"
-print(3 * str)
+str = "Holberton School"
+print(str + str + str)
 print(str[:9])
