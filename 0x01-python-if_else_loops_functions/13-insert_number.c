@@ -1,37 +1,110 @@
-#include "lists.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include "lists.h"
+
+int find_node(listint_t **h, int number);
+listint_t *insert_nodeint_at_index(listint_t **head, int idx, int n);
 
 /**
- * insert_node - inserts node in sorted list
- * @head: address of head pointer
- * @number: number to insert
- * Return: inserted node
+ * insert_node - inserts a new node at
+ * a given position
+ * @head: a pointer to a pointer to a listint_t struct
+ * @number: value of the n member of the new node
+ *
+ * Return: a pointer to the new node or NULL if it
+ * fails
+ *
  */
+
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *node = *head, *new = malloc(sizeof(listint_t));
+	listint_t **ptr = head;
+	listint_t *insert = NULL;
+	int idx;
 
-	if (!new)
+	idx = find_node(ptr, number);
+	insert = insert_nodeint_at_index(ptr, idx, number);
+	return (insert);
+}
+
+/**
+ * insert_nodeint_at_index - inserts a new node at
+ * a given position
+ * @head: a pointer to a pointer to a listint_t struct
+ * @idx: the index where the node should be added
+ * @n: value of the n element of the node
+ *
+ * Return: a pointer to the new node or NULL if it
+ * fails
+ *
+ */
+
+listint_t *insert_nodeint_at_index(listint_t **head, int idx, int n)
+{
+	listint_t **current = head;
+	listint_t *access = *head;
+	listint_t *newnode;
+	listint_t *prev = NULL;
+	int i = 0;
+
+	if (head == NULL)
 		return (NULL);
-
-	new->n = number;
-	new->next = NULL;
-
-	if (!node || new->n < node->n)
+	newnode = malloc(sizeof(listint_t));
+	if (newnode == NULL)
+		return (NULL);
+	newnode->n = n;
+	if (idx == 0)
 	{
-		new->next = node;
-		return (*head = new);
+		newnode->next = *current;
+		*current = newnode;
 	}
-
-	while (node)
+	else
 	{
-		if (!node->next || new->n < node->next->n)
+		while (i != idx)
 		{
-			new->next = node->next;
-			node->next = new;
-			return (node);
+			if (access->next != NULL)
+			{
+				prev = access;
+				access = access->next;
+				++i;
+			}
+			else if (idx <= (i + 1))
+			{
+				access->next = newnode;
+				return (newnode);
+			}
+			else
+				return (NULL);
 		}
-		node = node->next;
+		newnode->next = access;
+		prev->next = newnode;
 	}
-	return (NULL);
+	return (newnode);
+}
+
+/**
+ * find_node - returns number of the first node
+ * with an int greater than the int being inserted
+ * @h: pointer to the first element of the list
+ * @number:int to be inserted
+ *
+ * Return: index of first node greater than number
+ *
+ */
+
+int find_node(listint_t **h, int number)
+{
+	listint_t *numnode = *h;
+	int count = 0;
+
+	while (numnode != NULL)
+	{
+		if (numnode->n < number)
+		{
+			count++;
+		}
+		numnode = numnode->next;
+	}
+	return (count);
+}
 }
