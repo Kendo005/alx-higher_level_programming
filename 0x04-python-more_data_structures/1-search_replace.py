@@ -1,10 +1,3 @@
 #!/usr/bin/python3
-
-
 def search_replace(my_list, search, replace):
-    """
-    replaces all occurances of search with replace
-    """
-
-    return ([ele if ele != search else replace for ele in my_list])
-
+    return (list(map(lambda x: replace if x is search else x, my_list)))
