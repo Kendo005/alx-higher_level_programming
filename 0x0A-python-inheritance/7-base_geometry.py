@@ -1,22 +1,18 @@
 #!/usr/bin/python3
 """
-===================================
-module with class BaseGeometry
-===================================
+cccclass BaseGeometry
 """
 
 
 class BaseGeometry:
-    """BaseGeometry class"""
-
+    """A class with public attribute area"""
     def area(self):
-        """method for calculated area"""
+        """raise Exception"""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """Method for validate if a num is integer"""
-
+        """validates that value is an integer greater than 0"""
         if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
+            raise TypeError("{:s} must be an integer".format(name))
         if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+            raise ValueError("{:s} must be greater than 0".format(name))

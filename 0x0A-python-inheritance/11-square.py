@@ -51,3 +51,25 @@ class Rectangle(BaseGeometry):
         """Return the following rectangle description:\
         [Rectangle] <width>/<height>"""
         return "[Rectangle] {:d}/{:d}".format(self.__width, self.__height)
+
+
+class Square(Rectangle):
+    """Class Square that inherits from Rectangle"""
+    def __init__(self, size):
+        """Instantiation with size: def __init__(self, size):\
+        size must be a positive integer, validated by \
+        integer_validator"""
+        super().integer_validator("size", size)
+        self.__size = size
+        self._Rectangle__width = size
+        self._Rectangle__height = size
+
+    def area(self):
+        """Return the area of the Square"""
+        return self.__size * self.__size
+
+    def __str__(self):
+        """Return the square description: [Square] \
+        <width>/<height>"""
+        return "[Square] {:d}/{:d}".format(self.__size, self.__size)
+
