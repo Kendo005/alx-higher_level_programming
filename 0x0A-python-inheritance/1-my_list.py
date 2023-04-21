@@ -1,16 +1,14 @@
 #!/usr/bin/python3
 """
-subclass from List base class
+   1-my_list module
+   Class MyList that inherits from list that contain \
+   Public instance method: def print_sorted(self): that \
+   prints the list, but sorted (ascending sort)
 """
 
 
 class MyList(list):
-    """a subclass of list base class"""
-    def __init__(self):
-        """object constructor"""
-        super().__init__()
-        """Access the methods of the Base class"""
-
+    """Class MyList that inherits from list"""
     def print_sorted(self):
-        """print_sorted method"""
+        """Print the list, but sorted (ascending sort)"""
         print(sorted(self))
