@@ -146,3 +146,4 @@ class Rectangle(Base):
                           'y': self.__y}
 
         return obj_dictionary
+
