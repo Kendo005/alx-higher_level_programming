@@ -1,12 +1,7 @@
 #!/usr/bin/python3
-"""
-===================================
-module with class BaseGeometry
-===================================
-"""
+"""module for base_geometry - no test cases needed"""
 
 
 class BaseGeometry:
-    """empty class"""
+    """my BaseGeometry class"""
     pass
-
